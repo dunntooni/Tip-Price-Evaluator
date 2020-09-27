@@ -82,8 +82,29 @@ def promptTipAmount():
 
    return tip
 
-def getTip():
-   tip = 0.20
+def percentToTip(percent, bill):
+   return float(bill) * (float(percent) / 100)
+
+def getTip(bill):
+   tip = 0.00
+   userInput = None
+   inputInvalid = True
+   while inputInvalid == True:
+      print("------------------------------------------------------------------")
+      print("How would you like to calculate your tip?")
+      print("Type 'p' to input a percentage.")
+      print("Type 'q' to calculate a price based on the quality of your server.")
+      print("Type 'm' to manually input a tip amount.")
+      print("------------------------------------------------------------------")
+      userInput = input(">")
+      if userInput == "p" or userInput == "q" or userInput == "m":
+         inputInvalid = False
+   if userInput == "p":
+      tip = percentToTip(promptPercentage(), bill)
+   elif userInput == "q":
+      tip = percentToTip(rateServer(), bill)
+   elif userInput == "m":
+      tip = promptTipAmount()
    return tip
 
 def calculateTotal(bill, tip):
@@ -96,7 +117,7 @@ def displayTotal(total):
    print("Your total is $", total, ".", sep="")
 
 bill = promptBillAmount()
-tip = getTip()
+tip = getTip(bill)
 total = calculateTotal(bill, tip)
 
 displayTotal(total)
