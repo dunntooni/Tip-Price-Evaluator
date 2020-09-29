@@ -12,7 +12,7 @@ quality, or manual entry.
 3. Evaluates the tip
 4. Evaluates the total cost
 """
-
+#Prompts the user for the cost of their bill
 def promptBillAmount():
    inputInvalid = True
    cost = 0.00
@@ -26,6 +26,7 @@ def promptBillAmount():
 
    return cost
 
+#Prompts the user for a percentage to use for calculating a tip
 def promptPercentage():
    inputInvalid = True
    percent = 0
@@ -37,6 +38,7 @@ def promptPercentage():
          print("Invalid Number. Please provide only a whole number. (Ex: 20)")
    return percent
 
+#A dictionary designed to convert a rating into a percent
 def ratingToPercent(rating):
    percentDic = {
       1: 5,
@@ -47,6 +49,7 @@ def ratingToPercent(rating):
    }
    return percentDic.get(rating, "Invalid")
 
+#Prompts the user for a rating, and asks the user if the associated percent is satisfactory
 def rateServer():
    inputInvalid = True
    rating = 0
@@ -69,6 +72,7 @@ def rateServer():
 
    return percent
 
+#Prompts the user for a manual tip entry
 def promptTipAmount():
    inputInvalid = True
    tip = 0.00
@@ -82,9 +86,12 @@ def promptTipAmount():
 
    return tip
 
+#Uses the bill to generate a tip based on the desired percent
 def percentToTip(percent, bill):
    return float(bill) * (float(percent) / 100)
 
+# The main driver function. Uses a loop to prompt the user for
+# the means of calculating their tip/bill. Returns a tip value.
 def getTip(bill):
    tip = 0.00
    userInput = None
@@ -107,11 +114,13 @@ def getTip(bill):
       tip = promptTipAmount()
    return tip
 
+# Adds the tip and bill values
 def calculateTotal(bill, tip):
    total = 0.00
    total = float(bill) + float(tip)
    return total
 
+# Displays the finished result
 def displayTotal(total):
    total = "{:.2f}".format(total)
    print("Your total is $", total, ".", sep="")
@@ -124,6 +133,7 @@ displayTotal(total)
 
 
 """
+Testing code:
 percentage = promptPercentage()
 print("Your bill is $", bill, sep="")
 print("Your percentage is ", percentage, "%.", sep="")
