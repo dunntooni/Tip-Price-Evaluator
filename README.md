@@ -22,7 +22,14 @@ To run: `python main.py`
 <b>Quality:</b>  
 ![A user selecting Quality](quality.png)  
 <b>Manual:</b>  
-![A user selecting Manual](manual.png)
+![A user selecting Manual](manual.png)   
+  
+    
+  
+   
+
+<b>Error Checking:</b>  
+![Catching bad data the user could submit](Error-Checking.png)
 
 # Useful Websites
 
